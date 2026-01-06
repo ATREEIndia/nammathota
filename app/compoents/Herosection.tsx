@@ -11,9 +11,9 @@ const Herosection = () => {
         btn_href="/tool"
         btn_txt="Explore the tool" />
 
-        <div className="relative z-10  w-full  flex bg-green-200 pb-10 rounded-b-2xl shadow-xl ">
+        <div className="relative z-10   w-full  flex bg-green-200 pb-10 rounded-b-2xl shadow-xl ">
           
-            <div className="  top-0 left-0 w-full p-2 px-4 flex flex-col md:flex-row justify-center gap-5 -mt-20 items-stretch">
+            <div className="  top-0 left-0 w-full p-2 px-4 flex flex-col md:flex-row justify-center gap-5 -mt-10 items-stretch">
             <div className="bg-white p-4 rounded-lg flex flex-col gap-2 md:max-w-1/3 ">
                 <h1 className="text-lg font-semibold">About the tool</h1>
                 <p>Namma Thota is a smart tool to help urban gardeners develop viable garden spaces. It tells you if a plant is native to India, its invasive status, plant features, pests, pollinators and much more. It also offers useful tips like ideal locations, light and water needs and plant maintenance. High-quality images will help you visualise and select plants for creating green spaces in Bengaluru.</p>
