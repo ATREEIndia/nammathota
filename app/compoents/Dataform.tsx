@@ -366,6 +366,21 @@ const Dataform = ({ plantid, onCancel }: formprobs) => {
                         </div>
 
                         <div className="flex flex-col">
+                            <p className="text-sm text-gray-500 px-2">Known Host</p>
+                            <input onChange={(e) => { setInput_known_host(e.target.value) }} value={input_known_host} className="p-2 bg-gray-100 rounded-xl" type="text" placeholder="Enter Known Host" />
+                        </div>
+
+                        <div className="flex flex-col">
+                            <p className="text-sm text-gray-500 px-2">Common Pest</p>
+                            <input onChange={(e) => { setInput_pests(e.target.value) }} value={input_pests} className="p-2 bg-gray-100 rounded-xl" type="text" placeholder="Enter Common Pest" />
+                        </div>
+
+                        <div className="flex flex-col">
+                            <p className="text-sm text-gray-500 px-2">Diseases</p>
+                            <input onChange={(e) => { setInput_diseases(e.target.value) }} value={input_diseases} className="p-2 bg-gray-100 rounded-xl" type="text" placeholder="Enter Common Pest" />
+                        </div>
+
+                        <div className="flex flex-col">
                             <p className="text-sm text-gray-500 px-2">Propagation</p>
                             <input onChange={(e) => { setInput_propagation(e.target.value) }} value={input_propagation} className="p-2 bg-gray-100 rounded-xl" type="text" placeholder="Enter Propagation Method" />
                         </div>

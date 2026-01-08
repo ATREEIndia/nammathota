@@ -7,7 +7,7 @@ import { onValue, ref } from 'firebase/database';
 import { useParams } from 'next/navigation';
 import { useEffect, useState } from 'react';
 
-import { Leaf, Info, Droplets, Sun, Bug, Sprout, Calendar, MapPin, Heart, AlertTriangle } from 'lucide-react';
+import { Leaf, Info, Droplets, Sun, Bug, Sprout, Calendar, MapPin, Heart, AlertTriangle, BookOpenCheck, Apple } from 'lucide-react';
 import SafeImg from '@/app/compoents/Safeimg';
 
 const Page = () => {
@@ -50,9 +50,10 @@ const Page = () => {
             <div className="flex-1 flex-col flex justify-center">
 
               <h1 className="font-bold text-xl xl:text-3xl">{dbData[plantid]?.feat_commonname}</h1>
+              <p className=" xl:text-lg text-green-800 ">{dbData[plantid]?.common_name}</p>
               <p className="italic xl:text-xl text-gray-700">{dbData[plantid]?.species_name}</p>
 
-              <div className="mt-2 flex flex-col gap-2">
+              <div className="mt-5 flex flex-col gap-2">
                 <div className="flex gap-2">
                   <p className="font-semibold">Family: </p>
                   <p>{dbData[plantid]?.family_name}</p>
@@ -71,7 +72,7 @@ const Page = () => {
             </div>
 
 
-            <div className="flex  flex-col-reverse border-2 border-green-100 rounded-xl bg-green-100 w-full p-2">
+            <div className={`${dbData[plantid]?.tips.length>2?"flex":"hidden"}  flex-col-reverse border-2 border-green-100 rounded-xl bg-green-100 w-full p-2`}>
               <div className="p-2  border-l-2 border-green-500">
                 <p>{dbData[plantid]?.tips}</p>
 
@@ -288,7 +289,8 @@ const Page = () => {
 
         <div className="bg-white p-4 mt-5">
           <div className="flex items-center">
-            <Sprout className="text-green-600"/>
+            <Apple className="text-green-600"/>
+            
               <h1 className="font-black text-gray-600 text-md p-2">Uses & Benefits</h1>
           </div>
         
@@ -306,6 +308,27 @@ const Page = () => {
 
 
         </div>
+
+
+
+        <div className={`bg-white p-4 mt-5 ${dbData[plantid]?.plants_of_india_link.length>1?"flex flex-col":"hidden"}`}>
+          <div className="flex items-center">
+            <BookOpenCheck className="text-green-600"/>
+           
+              <h1 className="font-black text-gray-600 text-md p-2">More info</h1>
+          </div>
+        
+
+          <div className="flex justify-start gap-5 border-b border-gray-100 py-2 flex-col lg:flex-row ">
+            
+            <a href={dbData[plantid]?.plants_of_india_link} target="_blank" className="font-normal lg:w-[20vw] text-green-600  text-start ">{dbData[plantid]?.plants_of_india_link}</a>
+          </div>        
+  
+
+
+        </div>
+
+
 
         <div className="flex flex-col gap-5 p-4">
           <h1 className="font-black text-gray-600 text-md p-2">Gallery</h1>
