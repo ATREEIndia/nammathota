@@ -3,6 +3,7 @@ import { onValue, ref, set } from 'firebase/database';
 import React, { useEffect, useState } from 'react'
 import { db } from './Firebase';
 import { PlantType } from '../constants';
+import Upload2S3 from './Upload2S3';
 
 type formprobs = {
     plantid: number;
@@ -56,6 +57,49 @@ const Dataform = ({ plantid, onCancel }: formprobs) => {
     const [input_feature_image, setInput_feature_image] = useState("");
     const [input_other_images, setInput_other_images] = useState("");
     const [input_license_information, setInput_license_information] = useState("");
+
+    const [isuploaded_ft, Setisuploaded_ft] = useState(false);
+    const [isuploaded_img2, Setisuploaded_img2] = useState(false);
+    const [isuploaded_img3, Setisuploaded_img3] = useState(false);
+    const [isuploaded_img4, Setisuploaded_img4] = useState(false);
+    const [isuploaded_img5, Setisuploaded_img5] = useState(false);
+
+    const handleuploadimg_indicator = (index?: number, isuploaded?: boolean) => {
+        if (index && isuploaded) {
+            switch (index) {
+                case 1:
+                    Setisuploaded_ft(true)
+
+
+                    break;
+                case 2:
+                    Setisuploaded_img2(true)
+
+
+                    break;
+                case 3:
+                    Setisuploaded_img3(true)
+
+
+                    break;
+                case 4:
+                    Setisuploaded_img4(true)
+
+
+                    break;
+                case 5:
+                    Setisuploaded_img5(true)
+
+
+                    break;
+
+                default:
+                    break;
+            }
+        }
+
+
+    }
 
     const lmhoptions = ["Low", "Medium", "High"]
     const locationoptions = ["Indoor", "Outdoor", "Indoor and Outdoor"]
@@ -113,7 +157,7 @@ const Dataform = ({ plantid, onCancel }: formprobs) => {
             setInput_water_requirements(data.water_requirements || "");
             setInput_maintenance(data.maintenance || "");
             setInput_fragrance(data.fragrance || "");
-            setInput_orchid(data.orchid=== "Yes" || data.orchid=== "yes");
+            setInput_orchid(data.orchid === "Yes" || data.orchid === "yes");
             setInput_succulent(data.succulent === "Yes" || data.succulent === "yes");
             setInput_night_garden(data.night_garden === "Yes" || data.night_garden === "yes");
             setInput_allergen(data.allergen === "Yes" || data.allergen === "yes");
@@ -144,7 +188,7 @@ const Dataform = ({ plantid, onCancel }: formprobs) => {
     const submitData = async () => {
 
         const newdata = {
-            plantid: "nt"+String(input_plantid),
+            plantid: "nt" + String(input_plantid),
             species_name: input_species_name,
             common_name: input_common_name,
             rank: "NA",
@@ -175,11 +219,11 @@ const Dataform = ({ plantid, onCancel }: formprobs) => {
             water_requirements: input_water_requirements,
             maintenance: input_maintenance,
             fragrance: input_fragrance,
-            orchid: input_orchid? "Yes" : "No",
-            succulent: input_succulent? "Yes" : "No",
-            night_garden: input_night_garden? "Yes" : "No",
-            allergen: input_allergen? "Yes" : "No",
-            kid_pet_friendly: input_kid_pet_friendly? "Yes" : "No",
+            orchid: input_orchid ? "Yes" : "No",
+            succulent: input_succulent ? "Yes" : "No",
+            night_garden: input_night_garden ? "Yes" : "No",
+            allergen: input_allergen ? "Yes" : "No",
+            kid_pet_friendly: input_kid_pet_friendly ? "Yes" : "No",
             use: input_use,
             use_details: input_use_details,
             info: input_info,
@@ -337,8 +381,8 @@ const Dataform = ({ plantid, onCancel }: formprobs) => {
                                     ))}
                                 </select>
 
-                            </div> 
-                            
+                            </div>
+
                             <div className="flex flex-col">
                                 <p className="text-sm text-gray-500 px-2">Competativeness</p>
 
@@ -354,14 +398,14 @@ const Dataform = ({ plantid, onCancel }: formprobs) => {
                             <div className="flex flex-col">
                                 <p className="text-sm text-gray-500 px-2">Light Requirement</p>
 
-                                 <input onChange={(e) => { setInput_light_requirement(e.target.value) }} value={input_light_requirement} className="p-2 bg-gray-100 rounded-xl" type="text" placeholder="Enter Light Requirement" />
+                                <input onChange={(e) => { setInput_light_requirement(e.target.value) }} value={input_light_requirement} className="p-2 bg-gray-100 rounded-xl" type="text" placeholder="Enter Light Requirement" />
 
-                                
+
 
 
                             </div>
 
-                           
+
 
                             <div className="flex flex-col">
                                 <p className="text-sm text-gray-500 px-2">Water Requirements</p>
@@ -400,8 +444,8 @@ const Dataform = ({ plantid, onCancel }: formprobs) => {
 
 
                             </div>
-                            </div>
-                             <div className="p-2 py-4 flex justify-around gap-2 flex-wrap border rounded-2xl ">
+                        </div>
+                        <div className="p-2 py-4 flex justify-around gap-2 flex-wrap border rounded-2xl ">
 
                             <div className="flex items-center">
                                 <input onChange={(e) => setInput_succulent(e.target.checked)} checked={input_succulent} className="scale-150 rounded-xl accent-green-500" type="checkbox" />
@@ -457,6 +501,62 @@ const Dataform = ({ plantid, onCancel }: formprobs) => {
                             <p className="text-sm text-gray-500 px-2">Tips</p>
                             <textarea onChange={(e) => { setInput_tips(e.target.value) }} value={input_tips} className="p-2 bg-gray-100 rounded-xl" rows={3} placeholder="Enter Tips" />
                         </div>
+
+
+                        <div className="flex flex-col gap-2 border rounded-2xl" >
+                            <div className="p-2 py-4 flex justify-around gap-2 flex-wrap  ">
+
+                                <div className="flex items-center flex-col">
+
+                                    <p className="text-sm text-gray-500 px-2">Feature Image</p>
+                                    <Upload2S3 filename="ft.jpg" foldername={`nt${plantid}`} uploadgreen={handleuploadimg_indicator} />
+
+                                </div>
+
+                                <div className={`flex items-center flex-col ${isuploaded_img2 ? "bg-green-500" : ""}`}>
+
+                                    <p className="text-sm text-gray-500 px-2">Image 2</p>
+                                    <Upload2S3 filename="2.jpg" foldername={`nt${plantid}`} uploadgreen={handleuploadimg_indicator} />
+
+                                </div>
+
+                                <div className="flex items-center flex-col">
+
+                                    <p className="text-sm text-gray-500 px-2">Image 3</p>
+                                    <Upload2S3 filename="3.jpg" foldername={`nt${plantid}`} uploadgreen={handleuploadimg_indicator} />
+
+                                </div>
+
+                                <div className="flex items-center flex-col">
+
+                                    <p className="text-sm text-gray-500 px-2">Image 4</p>
+                                    <Upload2S3 filename="4.jpg" foldername={`nt${plantid}`} uploadgreen={handleuploadimg_indicator} />
+
+                                </div>
+
+                                <div className="flex items-center flex-col">
+
+                                    <p className="text-sm text-gray-500 px-2">Image 5</p>
+                                    <Upload2S3 filename="5.jpg" foldername={`nt${plantid}`} uploadgreen={handleuploadimg_indicator} />
+
+                                </div>
+
+
+                            </div>
+
+                            <p className="w-full text-center text-sm text-gray-800 p-2">Only .jpg files are allowed. The file extension should be .jpg not .JPG or .jpeg</p>
+
+
+                        </div>
+
+
+
+
+
+
+
+
+
 
                         <div className="flex flex-col">
                             <p className="text-sm text-gray-500 px-2">License Information</p>

@@ -5,6 +5,7 @@ import { NextRequest, NextResponse } from "next/server"
 type Postprobs={
     fileName:string,
     fileType:string
+    foldername:string
 }
 
 
@@ -22,10 +23,12 @@ const s3Client=new S3Client({
 
 export async function POST(request:NextRequest){
     try {
-        const{ fileName,fileType}:Postprobs= await request.json();
+        const{ fileName,fileType, foldername}:Postprobs= await request.json();
 
-        const folder="myfolder"
+        const folder=`assets/plants/${foldername}`
         const key=`${folder}/${fileName}`
+
+        console.log("key:: "+key)
 
         const command= new PutObjectCommand({
             Bucket:process.env.AWS_S3_BUCKET_NAME,

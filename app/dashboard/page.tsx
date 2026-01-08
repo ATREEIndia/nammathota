@@ -107,11 +107,7 @@ const page = () => {
 
 
 
-      <div className="w-full flex p-4">
-        <Upload2S3/>
-
-
-      </div>
+      
 
 
 
