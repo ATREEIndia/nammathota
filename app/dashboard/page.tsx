@@ -11,6 +11,7 @@ import { BiSolidMessageSquareEdit } from "react-icons/bi";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { MdOutlineMailOutline } from "react-icons/md";
 import { RiLockPasswordLine } from "react-icons/ri";
+import Upload2S3 from '../compoents/Upload2S3'
 
 
 const page = () => {
@@ -96,11 +97,23 @@ const page = () => {
   }
 
 
+
+
   return (
     <div>
       <div className="h-20 ">
         <Header currentpage="" />
       </div>
+
+
+
+      <div className="w-full flex p-4">
+        <Upload2S3/>
+
+
+      </div>
+
+
 
       {!isloggedin &&
         <div className="w-full h-full min-h-screen flex items-center justify-center bg-gray-100 ">
