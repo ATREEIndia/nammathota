@@ -5,16 +5,19 @@ import { ChangeEvent, useState } from "react"
 type probs = {
     filename: string;
     foldername: string;
-    uploadgreen:(i:number ,m:boolean)=>void
+    uploadgreen: (i: number, m: boolean) => void
 }
 
 const Upload2S3 = ({ filename, foldername, uploadgreen }: probs) => {
     const [file, setFile] = useState<File | null>(null)
     const [uploading, setUploading] = useState(false)
 
-    const[isuploadSuccess, Setisuploadsuccess]=useState(false)
+    const [isuploadSuccess, Setisuploadsuccess] = useState(false)
+    24
 
-    
+
+
+
 
     const handleFileSelect = async (e: ChangeEvent<HTMLInputElement>) => {
         const selectedFile = e.target.files?.[0]
@@ -46,15 +49,26 @@ const Upload2S3 = ({ filename, foldername, uploadgreen }: probs) => {
 
             // 2. Upload to S3
             const contentType = fileToUpload.type || "application/octet-stream"
-            const allowedTypes = [ ".jpg"];
+            const allowedTypes = [".jpg"];
 
-            console.log("contentType:: "+fileToUpload.name)
+            const TARGET_FILE_SIZE = 2 * 1024 * 1024
+
+            console.log("contentType:: " + fileToUpload.name)
+            console.log("FILESIZE:: " + fileToUpload.size)
 
             // 2. Validate
             if (!fileToUpload.name.includes('.jpg')) {
                 alert("Only .jpg files are allowed");
                 return;
             }
+
+            if(fileToUpload.size >TARGET_FILE_SIZE){
+                 alert("maximum file size is 2 MB");
+                return;
+
+
+            }
+
             const upload = await fetch(url, {
                 method: "PUT",
                 body: fileToUpload,
@@ -62,7 +76,7 @@ const Upload2S3 = ({ filename, foldername, uploadgreen }: probs) => {
             })
 
             if (upload.ok) {
-               // alert('Uploaded successfully!')
+                // alert('Uploaded successfully!')
                 Setisuploadsuccess(true)
             } else {
                 alert('Upload failed')
@@ -77,9 +91,9 @@ const Upload2S3 = ({ filename, foldername, uploadgreen }: probs) => {
     }
 
     return (
-        <div className={`p-2 cursor-pointer  border-2 text-sm ${isuploadSuccess?"bg-green-400":"bg-gray-100"} rounded-xl`}>
+        <div className={`p-2 cursor-pointer  border-2 text-sm ${isuploadSuccess ? "bg-green-400" : "bg-gray-100"} rounded-xl`}>
             <label className="text-sm font-mono cursor-pointer">
-               {isuploadSuccess ? 'Uploaded' : 'Choose ❀'}
+                {isuploadSuccess ? 'Uploaded' : 'Choose ❀'}
                 <input
                     onChange={handleFileSelect}
                     type="file"
