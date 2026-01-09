@@ -50,19 +50,23 @@ const Page = () => {
             <div className="flex-1 flex-col flex justify-center">
 
               <h1 className="font-bold text-xl xl:text-3xl">{dbData[plantid]?.feat_commonname}</h1>
-              <p className=" xl:text-lg text-green-800 ">{dbData[plantid]?.common_name}</p>
+              <p className={`${dbData[plantid]?.common_name.length<2?"hidden":""} xl:text-lg text-green-800 `}>{dbData[plantid]?.common_name}</p>
               <p className="italic xl:text-xl text-gray-700">{dbData[plantid]?.species_name}</p>
 
               <div className="mt-5 flex flex-col gap-2">
-                <div className="flex gap-2">
+                <div className={` ${dbData[plantid]?.family_name.length<3?"hidden":"flex"}  gap-2`}>
                   <p className="font-semibold">Family: </p>
                   <p>{dbData[plantid]?.family_name}</p>
                 </div>
-                <div className="flex gap-2">
+
+
+                <div className={` ${dbData[plantid]?.habit.length<3?"hidden":"flex"}  gap-2`}>
                   <p className="font-semibold">Type: </p>
                   <p>{dbData[plantid]?.habit}</p>
                 </div>
-                <div className="flex gap-2">
+
+
+               <div className={` ${dbData[plantid]?.native.length<2?"hidden":"flex"}  gap-2`}>
                   <p className="font-semibold">Native: </p>
                   <p>{dbData[plantid]?.native}</p>
                 </div>
@@ -72,9 +76,9 @@ const Page = () => {
             </div>
 
 
-            <div className={`${dbData[plantid]?.tips.length>2?"flex":"hidden"}  flex-col-reverse border-2 border-green-100 rounded-xl bg-green-100 w-full p-2`}>
+            <div className={`${dbData[plantid]?.info.length>2?"flex":"hidden"}  flex-col-reverse border-2 border-green-100 rounded-xl bg-green-100 w-full p-2`}>
               <div className="p-2  border-l-2 border-green-500">
-                <p>{dbData[plantid]?.tips}</p>
+                <p>{dbData[plantid]?.info}</p>
 
               </div>
             </div>
@@ -88,36 +92,46 @@ const Page = () => {
 
           </div>
 
+
         </div>
+
+
+         
+
+         {/* body section */}
 
         <div className="bg-white p-4 mt-5 ">
           <div className="flex items-center">
              <Leaf className="text-green-600"/>
-          <h1 className="font-black text-gray-600 text-md p-2">Growth & Characteristics</h1>
+          <h1 className="font-black text-gray-600 text-md p-2">Growth & Characteristics</h1> 
           </div>
           
 
-          <div className="flex justify-around gap-5 border-b border-gray-100 py-2 flex-col lg:flex-row">
+          <div className={`${dbData[plantid]?.lifespan.length>2?"flex lg:flex-row flex-col":"hidden"} justify-around gap-5 border-b border-gray-100 py-2  `}>
             <p className="font-semibold lg:w-[20vw]  lg:text-end ">Lifespan</p>
             <p className="font-normal lg:w-[20vw]  text-start ">{dbData[plantid]?.lifespan}</p>
           </div>
 
-          <div className="flex justify-around gap-5 border-b border-gray-100 py-2 flex-col lg:flex-row">
+
+
+         <div className={`${dbData[plantid]?.growth_speed.length>2?"flex lg:flex-row flex-col":"hidden"} justify-around gap-5 border-b border-gray-100 py-2  `}>
             <p className="font-semibold lg:w-[20vw]  lg:text-end ">Growth Speed</p>
             <p className="font-normal lg:w-[20vw]  text-start ">{dbData[plantid]?.growth_speed}</p>
           </div>
 
-          <div className="flex justify-around gap-5 border-b border-gray-100 py-2 flex-col lg:flex-row">
+
+
+         <div className={`${dbData[plantid]?.height_m.length>1?"flex lg:flex-row flex-col":"hidden"} justify-around gap-5 border-b border-gray-100 py-2  `}>
             <p className="font-semibold lg:w-[20vw]  lg:text-end ">Height</p>
             <p className="font-normal lg:w-[20vw]  text-start ">{dbData[plantid]?.height_m}</p>
           </div>
 
-          <div className="flex justify-around gap-5 border-b border-gray-100 py-2 flex-col lg:flex-row">
+         <div className={`${dbData[plantid]?.habit.length>1?"flex lg:flex-row flex-col":"hidden"} justify-around gap-5 border-b border-gray-100 py-2  `}>
             <p className="font-semibold lg:w-[20vw]  lg:text-end">Habit</p>
             <p className="font-normal  lg:w-[20vw]  text-start ">{dbData[plantid]?.habit}</p>
           </div>
 
-          <div className="flex justify-around gap-5 border-b border-gray-100 py-2 flex-col lg:flex-row">
+          <div className={`${dbData[plantid]?.variety.length>1?"flex lg:flex-row flex-col":"hidden"} justify-around gap-5 border-b border-gray-100 py-2  `}>
             <p className="font-semibold lg:w-[20vw]  lg:text-end">Variety</p>
             <p className="font-normal lg:w-[20vw]  text-start ">{dbData[plantid]?.variety}</p>
           </div>
@@ -134,27 +148,29 @@ const Page = () => {
           </div>
         
 
-          <div className="flex justify-around gap-5 border-b border-gray-100 py-2 flex-col lg:flex-row">
+          <div className={`${dbData[plantid]?.light_requirement.length>1?"flex lg:flex-row flex-col":"hidden"} justify-around gap-5 border-b border-gray-100 py-2  `}>
             <p className="font-semibold lg:w-[20vw]  lg:text-end ">Light</p>
             <p className="font-normal lg:w-[20vw]  text-start ">{dbData[plantid]?.light_requirement}</p>
           </div>
 
-          <div className="flex justify-around gap-5 border-b border-gray-100 py-2 flex-col lg:flex-row">
+         <div className={`${dbData[plantid]?.water_requirements.length>1?"flex lg:flex-row flex-col":"hidden"} justify-around gap-5 border-b border-gray-100 py-2  `}>
             <p className="font-semibold lg:w-[20vw]  lg:text-end ">Water</p>
             <p className="font-normal lg:w-[20vw]  text-start ">{dbData[plantid]?.water_requirements}</p>
           </div>
 
-          <div className="flex justify-around gap-5 border-b border-gray-100 py-2 flex-col lg:flex-row">
+          <div className={`${dbData[plantid]?.maintenance.length>1?"flex lg:flex-row flex-col":"hidden"} justify-around gap-5 border-b border-gray-100 py-2  `}>
             <p className="font-semibold lg:w-[20vw]  lg:text-end ">Maintenance</p>
             <p className="font-normal lg:w-[20vw]  text-start ">{dbData[plantid]?.maintenance}</p>
           </div>
 
-          <div className="flex justify-around gap-5 border-b border-gray-100 py-2 flex-col lg:flex-row">
+
+          <div className={`${dbData[plantid]?.pot_requirement.length>1?"flex lg:flex-row flex-col":"hidden"} justify-around gap-5 border-b border-gray-100 py-2  `}>
             <p className="font-semibold lg:w-[20vw]  lg:text-end ">Pot Requirement</p>
             <p className="font-normal lg:w-[20vw]  text-start ">{dbData[plantid]?.pot_requirement}</p>
           </div>
 
-          <div className="flex justify-around gap-5 border-b border-gray-100 py-2 flex-col lg:flex-row">
+
+          <div className={`${dbData[plantid]?.planting_location.length>1?"flex lg:flex-row flex-col":"hidden"} justify-around gap-5 border-b border-gray-100 py-2  `}>
             <p className="font-semibold lg:w-[20vw]  lg:text-end">Planting Location</p>
             <p className="font-normal lg:w-[20vw]  text-start ">{dbData[plantid]?.planting_location}</p>
           </div>
@@ -169,17 +185,17 @@ const Page = () => {
           </div>
         
 
-          <div className="flex justify-around gap-5 border-b border-gray-100 py-2 flex-col lg:flex-row">
+          <div className={`${dbData[plantid]?.flowering.length>1?"flex lg:flex-row flex-col":"hidden"} justify-around gap-5 border-b border-gray-100 py-2  `}>
             <p className="font-semibold lg:w-[20vw]  lg:text-end ">Flowering</p>
             <p className="font-normal lg:w-[20vw]  text-start ">{dbData[plantid]?.flowering}</p>
           </div>
 
-          <div className="flex justify-around gap-5 border-b border-gray-100 py-2 flex-col lg:flex-row">
+          <div className={`${dbData[plantid]?.fruiting.length>1?"flex lg:flex-row flex-col":"hidden"} justify-around gap-5 border-b border-gray-100 py-2  `}>
             <p className="font-semibold lg:w-[20vw]  lg:text-end ">Fruiting</p>
             <p className="font-normal lg:w-[20vw]  text-start ">{dbData[plantid]?.fruiting}</p>
           </div>
 
-          <div className="flex justify-around gap-5 border-b border-gray-100 py-2 flex-col lg:flex-row">
+          <div className={`${dbData[plantid]?.habitat.length>1?"flex lg:flex-row flex-col":"hidden"} justify-around gap-5 border-b border-gray-100 py-2  `}>
             <p className="font-semibold lg:w-[20vw]  lg:text-end ">Habitat</p>
             <p className="font-normal lg:w-[20vw]  text-start ">{dbData[plantid]?.habitat}</p>
           </div>
@@ -197,22 +213,23 @@ const Page = () => {
           </div>
         
 
-          <div className="flex justify-around gap-5 border-b border-gray-100 py-2 flex-col lg:flex-row">
+          <div className={`${dbData[plantid]?.pollinators_visitors.length>1?"flex lg:flex-row flex-col":"hidden"} justify-around gap-5 border-b border-gray-100 py-2  `}>
             <p className="font-semibold lg:w-[20vw]  lg:text-end ">Pollinators</p>
             <p className="font-normal lg:w-[20vw]  text-start ">{dbData[plantid]?.pollinators_visitors}</p>
           </div>
 
-          <div className="flex justify-around gap-5 border-b border-gray-100 py-2 flex-col lg:flex-row">
+          <div className={`${dbData[plantid]?.known_predators.length>1?"flex lg:flex-row flex-col":"hidden"} justify-around gap-5 border-b border-gray-100 py-2  `}>
             <p className="font-semibold lg:w-[20vw]  lg:text-end ">Known Predators</p>
             <p className="font-normal lg:w-[20vw]  text-start ">{dbData[plantid]?.known_predators}</p>
           </div>
 
-          <div className="flex justify-around gap-5 border-b border-gray-100 py-2 flex-col lg:flex-row">
+
+         <div className={`${dbData[plantid]?.known_host.length>1?"flex lg:flex-row flex-col":"hidden"} justify-around gap-5 border-b border-gray-100 py-2  `}>
             <p className="font-semibold lg:w-[20vw]  lg:text-end ">Known Host</p>
             <p className="font-normal lg:w-[20vw]  text-start ">{dbData[plantid]?.known_host}</p>
           </div>
 
-          <div className="flex justify-around gap-5 border-b border-gray-100 py-2 flex-col lg:flex-row">
+          <div className={`${dbData[plantid]?.competitiveness.length>1?"flex lg:flex-row flex-col":"hidden"} justify-around gap-5 border-b border-gray-100 py-2  `}>
             <p className="font-semibold lg:w-[20vw]  lg:text-end ">Competitiveness</p>
             <p className="font-normal lg:w-[20vw]  text-start ">{dbData[plantid]?.competitiveness}</p>
           </div>         
@@ -228,12 +245,12 @@ const Page = () => {
           </div>
         
 
-          <div className="flex justify-around gap-5 border-b border-gray-100 py-2 flex-col lg:flex-row">
+          <div className={`${dbData[plantid]?.allergen.length>1?"flex lg:flex-row flex-col":"hidden"} justify-around gap-5 border-b border-gray-100 py-2  `}>
             <p className="font-semibold lg:w-[20vw]  lg:text-end ">Allergen</p>
             <p className="font-normal lg:w-[20vw]  text-start ">{dbData[plantid]?.allergen}</p>
           </div>
 
-          <div className="flex justify-around gap-5 border-b border-gray-100 py-2 flex-col lg:flex-row">
+          <div className={`${dbData[plantid]?.kid_pet_friendly.length>1?"flex lg:flex-row flex-col":"hidden"} justify-around gap-5 border-b border-gray-100 py-2  `}>
             <p className="font-semibold lg:w-[20vw]  lg:text-end ">Kid & Pet Friendly</p>
             <p className="font-normal lg:w-[20vw]  text-start ">{dbData[plantid]?.kid_pet_friendly}</p>
           </div>
@@ -250,12 +267,12 @@ const Page = () => {
           </div>
         
 
-          <div className="flex justify-around gap-5 border-b border-gray-100 py-2 flex-col lg:flex-row">
+         <div className={`${dbData[plantid]?.pests.length>1?"flex lg:flex-row flex-col":"hidden"} justify-around gap-5 border-b border-gray-100 py-2  `}>
             <p className="font-semibold lg:w-[20vw]  lg:text-end ">Common Pests</p>
             <p className="font-normal lg:w-[20vw]  text-start ">{dbData[plantid]?.pests}</p>
           </div>
 
-          <div className="flex justify-around gap-5 border-b border-gray-100 py-2 flex-col lg:flex-row">
+         <div className={`${dbData[plantid]?.diseases.length>1?"flex lg:flex-row flex-col":"hidden"} justify-around gap-5 border-b border-gray-100 py-2  `}>
             <p className="font-semibold lg:w-[20vw]  lg:text-end ">Diseases</p>
             <p className="font-normal lg:w-[20vw]  text-start ">{dbData[plantid]?.diseases}</p>
           </div>
@@ -272,12 +289,12 @@ const Page = () => {
           </div>
         
 
-          <div className="flex justify-around gap-5 border-b border-gray-100 py-2 flex-col lg:flex-row ">
+          <div className={`${dbData[plantid]?.propagation.length>1?"flex lg:flex-row flex-col":"hidden"} justify-around gap-5 border-b border-gray-100 py-2  `}>
             <p className="font-semibold lg:w-[20vw]  lg:text-end ">Propagation Methods</p>
             <p className="font-normal lg:w-[20vw]  text-start ">{dbData[plantid]?.propagation}</p>
           </div>
 
-          <div className="flex justify-around gap-5 border-b border-gray-100 py-2 flex-col lg:flex-row ">
+          <div className={`${dbData[plantid]?.procurement.length>1?"flex lg:flex-row flex-col":"hidden"} justify-around gap-5 border-b border-gray-100 py-2  `}>
             <p className="font-semibold lg:w-[20vw]  lg:text-end ">Procurement</p>
             <p className="font-normal lg:w-[20vw]  text-start ">{dbData[plantid]?.procurement}</p>
           </div>
@@ -295,15 +312,15 @@ const Page = () => {
           </div>
         
 
-          <div className="flex justify-around gap-5 border-b border-gray-100 py-2 flex-col lg:flex-row ">
+          <div className={`${dbData[plantid]?.use.length>1?"flex lg:flex-row flex-col":"hidden"} justify-around gap-5 border-b border-gray-100 py-2  `}>
             <p className="font-semibold lg:w-[20vw]  lg:text-end ">Primary Uses</p>
             <p className="font-normal lg:w-[20vw]  text-start ">{dbData[plantid]?.use}</p>
           </div>
 
-          <div className="flex justify-around gap-5 border-b border-gray-100 py-2 flex-col lg:flex-row">
+          {/* <div className="flex justify-around gap-5 border-b border-gray-100 py-2 flex-col lg:flex-row">
             <p className="font-semibold lg:w-[20vw]  lg:text-end ">Details</p>
             <p className="font-normal lg:w-[20vw]  text-start ">{dbData[plantid]?.info}</p>
-          </div>
+          </div> */}
   
 
 
