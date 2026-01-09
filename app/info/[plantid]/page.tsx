@@ -126,10 +126,10 @@ const Page = () => {
             <p className="font-normal lg:w-[20vw]  text-start ">{dbData[plantid]?.height_m}</p>
           </div>
 
-         <div className={`${dbData[plantid]?.habit.length>1?"flex lg:flex-row flex-col":"hidden"} justify-around gap-5 border-b border-gray-100 py-2  `}>
+         {/* <div className={`${dbData[plantid]?.habit.length>1?"flex lg:flex-row flex-col":"hidden"} justify-around gap-5 border-b border-gray-100 py-2  `}>
             <p className="font-semibold lg:w-[20vw]  lg:text-end">Habit</p>
             <p className="font-normal  lg:w-[20vw]  text-start ">{dbData[plantid]?.habit}</p>
-          </div>
+          </div> */}
 
           <div className={`${dbData[plantid]?.variety.length>1?"flex lg:flex-row flex-col":"hidden"} justify-around gap-5 border-b border-gray-100 py-2  `}>
             <p className="font-semibold lg:w-[20vw]  lg:text-end">Variety</p>
