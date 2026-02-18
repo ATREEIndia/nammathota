@@ -43,7 +43,7 @@ const page = () => {
   {
     "name": "Shriranjani Iyer",
     "role": "Plant database curation",
-    "designation": "",
+    "designation": "https://www.linkedin.com/in/shriranjani-l-iyer/",
     "image": "https://namma-thota.s3.amazonaws.com/assets/team/shriranjani.jpg"
   },
   {
