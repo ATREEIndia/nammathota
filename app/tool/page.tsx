@@ -16,100 +16,93 @@ const page = () => {
     const [resultData, SetResultData] = useState<PlantType>({})
 
     const SelectionQuerries: Querrytype = {
-        1: {
-            Title: "Where do you plan to grow your plants?",
-            img: "q1.png",
-            Options: {
-                1: {
-                    text: "Indoor",
-                    desc: "Inside the house with controlled light and temperature conditions"
-                },
-                2: {
-                    text: "Outdoor",
-                    desc: "Open ground space with full or partial sun"
-                },
-                3: {
-                    text: "Balcony / Terrace",
-                    desc: "Small outdoor space with partial sun exposure"
-                }
+    1: {
+        Title: "Where do you plan to grow your plants?",
+        img: "q1.png",
+        Options: {
+            1: {
+                text: "Indoor",
+                desc: "Inside the house with controlled light and temperature conditions"
+            },
+            2: {
+                text: "Outdoor",
+                desc: "Open ground space with full or partial sun"
+            },
+            3: {
+                text: "Balcony / Terrace",
+                desc: "Small outdoor space with partial sun exposure"
             }
-        },
-        2: {
-            Title: "How often can you care for your garden?",
-            img: "q2.png",
-            Options: {
-                1: {
-                    text: "I travel a lot",
-                    desc: "Plants that need minimal care, light pruning, low fertilizer needs, few pest or disease issues."
-                },
-                2: {
-                    text: "I can do occasional check-ins",
-                    desc: "Plants that need weekly attention, seasonal pruning, occasional fertilising, and sometimes face pests or diseases."
-                },
-                3: {
-                    text: "I am Happy to Tend Regularly",
-                    desc: "Plants that need frequent attention, regular pruning, consistent fertilising, and are more likely to face pests or diseases."
-                }
-            }
-        },
-        3: {
-            Title: "How much water can you spare for your garden?",
-            img: "q3.png",
-            Options: {
-                1: {
-                    text: "My Water Use is Limited",
-                    desc: "Plants that survive on minimal watering."
-                },
-                2: {
-                    text: "My water Use is Regular but Mindful",
-                    desc: "Plants that need moderate watering to stay healthy."
-                },
-                3: {
-                    text: "I am Happy to Water Frequently",
-                    desc: "Plants that prefer require frequent watering."
-                }
-            },
-
-        },
-        4: {
-            Title: "What do you want from your plants?",
-            img: "q4.png",
-            Options: {
-                1: {
-                    text: "Medicinal Benefits",
-                    desc: "Plants whose parts or whole can be used to prevent, relieve, or treat health conditions, or promote general wellness."
-                },
-                2: {
-                    text: "Edible Produce",
-                    desc: "Plants that produce fruits, vegetables, or herbs for cooking and consumption."
-                },
-                3: {
-                    text: "Ornamental Beauties",
-                    desc: "Plants grown mainly for their decorative or aesthetic appeal."
-                }
-            },
-
-
-        },
-        5: {
-            Title: "Do you need plants that are safe for kids or pets?",
-            img: "q5.png",
-            Options: {
-                1: {
-                    text: "Yes",
-                    desc: "Plants that are non-toxic and safe for children and pets."
-                },
-                2: {
-                    text: "No",
-                    desc: "Plants that can be toxic if touched or ingested."
-                },
-
-            },
-
-
         }
-
+    },
+    2: {
+        Title: "How often can you care for your garden?",
+        img: "q2.png",
+        Options: {
+            1: {
+                text: "I travel a lot",
+                desc: "Plants that need minimal care, light pruning, low fertilizer needs, few pest or disease issues."
+            },
+            2: {
+                text: "I can do occasional check-ins",
+                desc: "Plants that need weekly attention, seasonal pruning, occasional fertilising, and sometimes face pests or diseases."
+            },
+            3: {
+                text: "I am happy to tend regularly",
+                desc: "Plants that need frequent attention, regular pruning, consistent fertilising, and are more likely to face pests or diseases."
+            }
+        }
+    },
+    3: {
+        Title: "How much water can you spare for your garden?",
+        img: "q3.png",
+        Options: {
+            1: {
+                text: "My water use is limited",
+                desc: "Plants that survive on minimal watering."
+            },
+            2: {
+                text: "My water use is regular but mindful",
+                desc: "Plants that need moderate watering to stay healthy."
+            },
+            3: {
+                text: "I am happy to water frequently",
+                desc: "Plants that prefer or require frequent watering."
+            }
+        },
+    },
+    4: {
+        Title: "What do you want from your plants?",
+        img: "q4.png",
+        Options: {
+            1: {
+                text: "Medicinal benefits",
+                desc: "Plants whose parts or whole can be used to prevent, relieve, or treat health conditions, or promote general wellness."
+            },
+            2: {
+                text: "Edible produce",
+                desc: "Plants that produce fruits, vegetables, or herbs for cooking and consumption."
+            },
+            3: {
+                text: "Ornamental beauties",
+                desc: "Plants grown mainly for their decorative or aesthetic appeal."
+            }
+        },
+    },
+    5: {
+        Title: "Do you need plants that are safe for kids or pets?",
+        img: "q5.png",
+        Options: {
+            1: {
+                text: "Yes",
+                desc: "Plants that are non-toxic and safe for children and pets."
+            },
+            2: {
+                text: "No",
+                desc: "Plants that can be toxic if touched or ingested."
+            },
+        },
     }
+}
 
     const [selections, Setselections] = useState<Record<number, number[]>>({
         1: [], 2: [], 3: [], 4: [], 5: []
@@ -253,7 +246,7 @@ const page = () => {
                     if (useSelected) {
                         const use = data.use.toLowerCase();
 
-                        querry = querry && use.includes( useSelected);
+                        querry = querry && use.includes(useSelected);
                     }
 
                     if (PetFriendlySelected) {

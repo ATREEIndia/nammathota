@@ -43,8 +43,9 @@ const page = () => {
   {
     "name": "Shriranjani Iyer",
     "role": "Plant database curation",
-    "designation": "https://www.linkedin.com/in/shriranjani-l-iyer/",
-    "image": "https://namma-thota.s3.amazonaws.com/assets/team/shriranjani.jpg"
+    "designation": "",
+    "image": "https://namma-thota.s3.amazonaws.com/assets/team/shriranjani.jpg",
+    "link":"https://www.linkedin.com/in/shriranjani-l-iyer/"
   },
   {
     "name": "Akshatha V.S.",
@@ -69,7 +70,7 @@ const page = () => {
         <Banner title="Team" sub_title=""/>
         <h1 className={`${style_h1} w-full text-center p-4`}>Meet Our Team</h1>
         
-        <div className=" grid grid-cols-2 md:grid-cols-3 xl:grid-cols-5 place-items-center  py-5">
+        <div className=" grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 place-items-center  py-5">
             {team.map((person,index)=>(
                 <div onClick={()=>{handleclick(person)}}  key={index} className="py-4 cursor-pointer">
                      <img src={person.image} alt="" className="w-50 h-50 rounded-full"
