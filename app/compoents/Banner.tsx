@@ -10,7 +10,7 @@ type Bannerprobs={
 
 const Banner = ({title,sub_title,img='/garden.jpg',btn_txt,btn_href}:Bannerprobs) => {
   return (
-    <div className="w-full h-[50vh] relative" >
+    <div className="w-full h-[60vh] relative" >
         <div className="w-full h-full absolute bg-green-300 opacity-40 rounded-xl z-5 "></div>
 
         <div className="absolute text-white top-20 lg:top-50 left-0 w-full flex flex-col gap-2 items-center z-100">
