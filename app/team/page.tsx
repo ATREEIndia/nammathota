@@ -38,7 +38,8 @@ const page = () => {
     "name": "Keerthana R.",
     "role": "Managed cataloguing of plant images",
     "designation": "Research Associate, ATREE",
-    "image": "https://namma-thota.s3.amazonaws.com/assets/team/keerthana.jpg"
+    "image": "https://namma-thota.s3.amazonaws.com/assets/team/keerthana.jpg",
+    'link': 'https://www.linkedin.com/in/keerthana-r-104343192/'
   },
   {
     "name": "Shriranjani Iyer",
