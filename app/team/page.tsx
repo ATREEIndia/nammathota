@@ -7,37 +7,37 @@ import { style_h1 } from '../constants'
 const page = () => {
     const team=[
   {
-    "name": "Rajkamal",
-    "role": "Principal Contributor",
+    "name": "Rajkamal Goswami",
+    "role": "Principal investigatior",
     "designation": "Fellow, ATREE",
     "image": "https://namma-thota.s3.amazonaws.com/assets/team/Rajkamal.jpg",
     "link":"https://www.atree.org/profile/rajkamal-goswami/"
   },
   {
-    "name": "R. Ganesan",
-    "role": "Principal Contributor",
+    "name": "Rengaian Ganesan",
+    "role": "Selected the 280 plant species.",
     "designation": "Senior Fellow, ATREE",
     "image": "https://namma-thota.s3.amazonaws.com/assets/team/RG.jpeg",
     "link":"https://www.atree.org/profile/ganesan/"
   },
   {
     "name": "Sreekuttan V.N.",
-    "role": "Web-App Developer",
+    "role": "Data Base and Web-App Developer",
     "designation": "Communications Officer, ATREE",
     "image": "https://namma-thota.s3.amazonaws.com/assets/team/sreekuttan.jpg",
     "link": "https://www.atree.org/profile/sree-kuttan/"
   },
   {
     "name": "Praisy Swetha S.",
-    "role": "Plant database curation",
+    "role": "Coordinated app development and outreach",
     "designation": "",
     "image": "https://namma-thota.s3.amazonaws.com/assets/team/praisy.jpg",
     "link":"https://www.linkedin.com/in/praisy-swetha/?originalSubdomain=in"
   },
   {
     "name": "Keerthana R.",
-    "role": "Plant database curation",
-    "designation": "",
+    "role": "Managed cataloguing of plant images",
+    "designation": "Research Associate, ATREE",
     "image": "https://namma-thota.s3.amazonaws.com/assets/team/keerthana.jpg"
   },
   {
@@ -49,7 +49,7 @@ const page = () => {
   },
   {
     "name": "Akshatha V.S.",
-    "role": "Plant database curation",
+    "role": "Managed field data collection",
     "designation": "",
     "image": "https://namma-thota.s3.amazonaws.com/assets/team/akshatha.jpg"
   }
@@ -72,7 +72,7 @@ const page = () => {
         
         <div className=" grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 place-items-center  py-5">
             {team.map((person,index)=>(
-                <div onClick={()=>{handleclick(person)}}  key={index} className="py-4 cursor-pointer">
+                <div onClick={()=>{handleclick(person)}}  key={index} className="py-4 cursor-pointer flex flex-col items-center">
                      <img src={person.image} alt="" className="w-50 h-50 rounded-full"
                     onError={(e)=>{e.currentTarget.src="https://namma-thota.s3.amazonaws.com/assets/team/placeholder.png"}} />
                     <h1 className="w-full text-center font-bold text-xl pt-2">{person.name}</h1>
