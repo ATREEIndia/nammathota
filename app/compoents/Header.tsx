@@ -25,6 +25,10 @@ const Header = ({ currentpage }: headerprobs) => {
         {
             label: "Team",
             href: "/team"
+        },
+        {
+            label: "References",
+            href: "/references"
         }
     ]
 
